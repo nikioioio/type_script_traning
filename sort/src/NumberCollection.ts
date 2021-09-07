@@ -1,22 +1,23 @@
-export class NumberCollection implements Collection {
+import {Sorter} from "./Sorter";
 
-    length: number;
+export class NumberCollection extends Sorter{
 
     constructor(public data: number[]) {
-        this.length = this.data.length;
+        super();
     }
 
-    swap(i: number, j: number): void {
-        const leftHand = this.data[i];
-        this.data[i] = this.data[j];
-        this.data[j] = leftHand;
+    get length(): number {
+        return this.data.length
     }
 
-    compare(i: number, j: number): boolean {
-        if (this.data[i] > this.data[j]) {
-            return true;
-        }
-        return false;
+    swap(leftIndex: number, rightIndex: number): void {
+        const leftHand = this.data[leftIndex];
+        this.data[leftIndex] = this.data[rightIndex];
+        this.data[rightIndex] = leftHand;
+    }
+
+    compare(leftIndex: number, rightIndex: number): boolean {
+        return  this.data[leftIndex] > this.data[rightIndex]
     }
 
 
