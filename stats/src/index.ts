@@ -1,26 +1,21 @@
+import {dateStringToDate} from "./util";
+import { MatchResult } from './MatchResult'
+import {MatchReader} from "./MatchReader";
 import {CsvFileReader} from "./CsvFileReader";
 
-const scvFile = new CsvFileReader('105 football.csv');
-scvFile.read();
-const matches = scvFile.data;
+//Createan object that implemetns the DataReader interface and put him into object MatchReader (constructor input object DataReader))
+const scvFile = new MatchReader(new CsvFileReader('105 football.csv'));
+scvFile.load();
 
-//Enum - enumeration
-enum MatchResult {
-    Homewin = 'H',
-    AwayWin = 'A',
-    Draw = 'D'
-}
+//MatchReader.matches
+const matches = scvFile.matches
 
 
-let manUnitedWins  = 0;
 
-for (let match of matches){
-    if (match[1] === 'Man United' && match[5] === MatchResult.Homewin){
-        manUnitedWins++;
-    }else if(match[2] === 'Man United' && match[5] === MatchResult.AwayWin){
-        manUnitedWins++;
-    }
-}
+console.log(matches[0][0])
 
-console.log(`Man united won ${manUnitedWins} times`);
+
+
+
+
 

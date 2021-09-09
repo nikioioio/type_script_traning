@@ -1,4 +1,7 @@
 import {readFileSync} from "fs";
+import { MatchResult } from './MatchResult'
+
+
 
 export class CsvFileReader {
 
@@ -14,7 +17,6 @@ export class CsvFileReader {
             .split('\n')
             .map((row: string): string[] => {
                 return row.split(',');
-            });
-
+            })
     }
 }
