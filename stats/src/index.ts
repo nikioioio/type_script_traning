@@ -2,6 +2,7 @@ import {dateStringToDate} from "./util";
 import { MatchResult } from './MatchResult'
 import {MatchReader} from "./MatchReader";
 import {CsvFileReader} from "./CsvFileReader";
+import { Summary } from "./Summary";
 
 //Createan object that implemetns the DataReader interface and put him into object MatchReader (constructor input object DataReader))
 const scvFile = new MatchReader(new CsvFileReader('105 football.csv'));
@@ -12,7 +13,8 @@ const matches = scvFile.matches
 
 
 
-console.log(matches[0][0])
+const summary = Summary.getReportAnalysisWithHtmlReport('Man United');
+summary.buildAndPrintReport(matches)
 
 
 
